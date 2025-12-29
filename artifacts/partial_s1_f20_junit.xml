@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="2" failures="0" skipped="0" tests="2" time="0.126" timestamp="2025-12-09T14:10:02.852956+02:00" hostname="DESKTOP-LQR1030"><testcase classname="" name="tests.test_mod_0" time="0.000"><error message="collection failure">ImportError while importing test module 'D:\Bakalaurs\Code\ati-demo\tests\test_mod_0.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Andrei\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_mod_0.py:1: in &lt;module&gt;
+    from src.mod_0 import add_0, mul_0
+E   ModuleNotFoundError: No module named 'src'</error></testcase><testcase classname="" name="tests.test_mod_1" time="0.000"><error message="collection failure">ImportError while importing test module 'D:\Bakalaurs\Code\ati-demo\tests\test_mod_1.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Andrei\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_mod_1.py:1: in &lt;module&gt;
+    from src.mod_1 import add_1, mul_1
+E   ModuleNotFoundError: No module named 'src'</error></testcase></testsuite></testsuites>
