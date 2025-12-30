@@ -104,26 +104,31 @@ x = [p[0] for p in points]
 tet = [p[1] for p in points]
 cr = [p[2] for p in points]
 
-# --- Plot with two Y-axes (readable!) ---
-fig, ax1 = plt.subplots()
+# --- Plot 1: TET only ---
+fig1, ax = plt.subplots()
+ax.plot(x, tet, marker="o", linestyle="-")
+ax.set_xlabel("Atlasīto testu daļa (%)")
+ax.set_ylabel("TET (s)")
+ax.set_title("TET atkarībā no atlasīto testu daļas")
+ax.grid(True, alpha=0.3)
+fig1.tight_layout()
 
-l1 = ax1.plot(x, tet, marker="o", linestyle="-", label="TET (s)")
-ax1.set_xlabel("Atlasīto testu daļa (%)")
-ax1.set_ylabel("TET (s)")
-ax1.grid(True, alpha=0.3)
+out1 = OUT_DIR / "att_4_2a_TET.png"
+plt.savefig(out1, dpi=200)
+plt.close(fig1)
 
-ax2 = ax1.twinx()
-l2 = ax2.plot(x, cr, marker="s", linestyle="--", label="CR (%)")
-ax2.set_ylabel("CR (%)")
+# --- Plot 2: CR only ---
+fig2, ax = plt.subplots()
+ax.plot(x, cr, marker="s", linestyle="--")
+ax.set_xlabel("Atlasīto testu daļa (%)")
+ax.set_ylabel("CR (%)")
+ax.set_title("CR atkarībā no atlasīto testu daļas")
+ax.grid(True, alpha=0.3)
+fig2.tight_layout()
 
-# One combined legend (correct handles)
-lines = l1 + l2
-labels = [ln.get_label() for ln in lines]
-ax1.legend(lines, labels, loc="upper left")
+out2 = OUT_DIR / "att_4_2b_CR.png"
+plt.savefig(out2, dpi=200)
+plt.close(fig2)
 
-fig.suptitle("TET un CR atkarībā no atlasīto testu daļas")
-fig.tight_layout()
+print(f"Saglabāti grafiki:\n - {out1}\n - {out2}")
 
-out = OUT_DIR / "att_4_2.png"
-plt.savefig(out, dpi=200)
-plt.close()

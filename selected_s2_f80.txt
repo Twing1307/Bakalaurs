@@ -1,8 +1,8 @@
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_0.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_1.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_2.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_3.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_4.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_5.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_6.py
-D:/Bakalaurs/Code/ati-demo/tests/test_mod_7.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_0.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_1.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_2.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_3.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_4.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_5.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_6.py
+C:/Users/Andrei/Documents/GitHub/Bakalaurs/ati-demo/tests/test_mod_7.py
