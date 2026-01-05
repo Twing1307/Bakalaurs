@@ -53,19 +53,24 @@ def parse_coverage(path: Path):
 
 
 def main():
-    full_junit = ART / "full_junit.xml"
-    full_cov = ART / "full_coverage.xml"
-
-    f_tests, f_failed, f_time = parse_junit(full_junit)
-    f_cov = parse_coverage(full_cov)
-
-    print("=== Pilnais tests ===")
-    print(f"Tests: {f_tests}, failed: {f_failed}, time: {f_time:.3f}s, coverage: {f_cov:.1f}%\n")
-
     print("=== Eksperimentu kopsavilkums ===")
-    print("Scenario;Fraction%;Tests;Time_s;Coverage%;Speedup;Coverage_retention%")
+    print("Scenario;Fraction%;Tests;Time_s;Coverage%;Speedup;Coverage_retention%;FDR")
 
     for sid, desc in SCENARIO_INFO.items():
+        # FULL bāze katram scenārijam
+        full_junit = ART / f"full_s{sid}_junit.xml"
+        full_cov = ART / f"full_s{sid}_coverage.xml"
+
+        f_tests, f_failed, f_time = parse_junit(full_junit)
+        f_cov = parse_coverage(full_cov)
+
+        print(f"\n=== Pilnais tests: Scenārijs {sid} ===")
+        print(f"Tests: {f_tests}, failed: {f_failed}, time: {f_time:.3f}s, coverage: {f_cov:.1f}%")
+
+        if f_tests == 0 or f_time == 0 or f_cov == 0:
+            print(f"[WARN] Nav full rezultātu scenārijam {sid}. Palaid run_experiments.py.")
+            continue
+
         for frac in FRACTIONS:
             junit_path = ART / f"partial_s{sid}_f{frac}_junit.xml"
             cov_path = ART / f"partial_s{sid}_f{frac}_coverage.xml"
@@ -79,9 +84,13 @@ def main():
             speedup = (f_time / p_time) if (f_time > 0 and p_time > 0) else 0.0
             cov_ret = (p_cov / f_cov * 100.0) if f_cov > 0 else 0.0
 
+            # FDR aprēķins (skat. 4.3)
+            fdr = (p_failed / f_failed) if f_failed > 0 else None
+            fdr_str = "—" if fdr is None else f"{fdr:.2f}"
+
             print(
                 f"{sid}-{desc};{frac};{p_tests};{p_time:.3f};{p_cov:.1f};"
-                f"{speedup:.2f};{cov_ret:.1f}"
+                f"{speedup:.2f};{cov_ret:.1f};{fdr_str}"
             )
 
 

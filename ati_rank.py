@@ -81,7 +81,7 @@ def map_tests_to_modules() -> Dict[Path, Set[str]]:
             if mod1:
                 modules.add(mod1)
             elif mod2:
-                # mod2 может быть 'mod_5' или 'mod_5.something'
+                # mod2 can be 'mod_5' or 'mod_5.something'
                 modules.add(mod2.split(".")[0])
         if modules:
             mapping[test_file] = modules

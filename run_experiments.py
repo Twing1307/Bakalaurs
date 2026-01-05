@@ -29,6 +29,22 @@ def run():
         sid = scenario["id"]
         changed = scenario["changed_files"]
         print(f"\n=== Scenario {sid}: changed_files={changed} ===")
+         # 0) FULL run (pilnais testu komplekts) scenārijam
+        full_junit = ART / f"full_s{sid}_junit.xml"
+        full_cov = ART / f"full_s{sid}_coverage.xml"
+
+        cmd_full = [
+            "pytest",
+            "-q",
+            "--durations=0",
+            f"--junitxml={full_junit}",
+            "--cov=src",
+            f"--cov-report=xml:{full_cov}",
+        ]
+        print("  Running FULL:", " ".join(cmd_full))
+        subprocess.run(cmd_full, check=False)
+        res = subprocess.run(cmd_full, check=False)
+        print(f"  FULL exit code: {res.returncode}")
 
         for frac in FRACTIONS:
             frac_pct = int(frac * 100)
@@ -77,7 +93,7 @@ def run():
                 f"--cov-report=xml:{cov_path}",
             ]
             print("  Running:", " ".join(cmd_pytest))
-            subprocess.run(cmd_pytest, check=True)
+            subprocess.run(cmd_pytest, check=False)
 
     print("\nAll experiments finished.")
 
